@@ -1,0 +1,19 @@
+{
+  "name": "ql-stats-manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "arpad": "^0.1.2",
+    "async": "^1.5.0",
+    "mongodb": "^2.0.48",
+    "mongoose": "^4.2.4",
+    "ql-server-monitor": "0.0.2",
+    "redis": "^2.3.0"
+  }
+}
