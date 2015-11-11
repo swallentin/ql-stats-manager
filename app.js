@@ -1,15 +1,22 @@
 var async = require('async'),
-    serverMonitor = require('ql-server-monitor').create(),
-    redisServerManager = require('./lib/RedisServerManager').create(serverMonitor),
-    statsManager = require('./lib/StatsManager').create(serverMonitor);
+    winston = require('winston'),
+    monitor = require('ql-server-monitor').createMonitor(winston),
+    redisServerManager = require('./lib/RedisServerManager').createManager(monitor, winston);
+    statsManager = require('./lib/StatsManager').createManager(monitor, winston);
 
-async.series([
-    statsManager.start,
-    redisServerManager.start
-], function (err, results) {
+monitor.setMaxListeners(0);
+
+statsManager.start(function (err) {
     if(err) {
-        console.log(err);
-        return process.exit(1);
+        console.error(err);
+        process.exit(1);
     }
-   console.log('Started ql-stats-manager successfully.');
+    redisServerManager.start(function (err) {
+        if(err) {
+            winston.error(err);
+            process.exit(1);
+        }
+        winston.log('Started ql-stats-manager successfully.');
+
+    });
 });

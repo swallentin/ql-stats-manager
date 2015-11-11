@@ -1,0 +1,16 @@
+{
+  "settings": {
+    "mongodb": {
+      "connectionString": "mongodb://127.0.0.1/ql-stats"
+    },
+    "redis": {
+    },
+    "elo": {
+      "duel": {
+        "default": 32,
+        "2100": 24,
+        "2400": 16
+      }
+    }
+  }
+}
