@@ -14,6 +14,7 @@
     "mongodb": "^2.0.48",
     "mongoose": "^4.2.4",
     "ql-server-monitor": "*",
-    "redis": "^2.3.0"
+    "redis": "^2.3.0",
+    "winston": "^2.1.0"
   }
 }
